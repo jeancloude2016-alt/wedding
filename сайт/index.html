@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Day | Иван & Мария</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; padding: 0;
+            text-align: center; color: #333; 
+            background-color: #F5E0C3; 
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        header { padding: 20px 20px 10px; }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: #800020; 
+            margin: 0 0 15px 0;
+            font-weight: 400;
+        }
+
+        .main-photo {
+            width: 100%;
+            max-width: 480px; 
+            height: 520px;    
+            margin: 0 auto;   
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(128,0,32,0.1);
+            background: #f0f0f0;
+            border: 3px solid #800020;
+        }
+        .main-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: center 20%;
+        }
+
+        .photo-slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #555;
+            margin: 20px auto 30px;
+            max-width: 480px;
+            letter-spacing: 1px;
+        }
+
+        .invite-text {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: #444;
+            padding: 0 20px;
+            font-weight: 400;
+        }
+
+        .date-block {
+            display: inline-block;
+            margin: 10px 0 50px;
+            padding: 20px 40px;
+            border-top: 1px solid #800020;
+            border-bottom: 1px solid #800020;
+        }
+        .day-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            line-height: 1;
+            color: #800020;
+            font-weight: 400;
+        }
+        .month-year-info {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 1px solid #800020;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: #444;
+        }
+        .weekday {
+            display: block;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: #800020;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        section { padding: 20px; max-width: 700px; margin: 0 auto; }
+        
+        .card {
+            background: #F5E0C3; 
+            padding: 50px 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+        }
+
+        .with-border {
+            border: 2px solid #800020;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .no-border {
+            border: none;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif; 
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 1.15rem;
+            color: #800020;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .restaurant-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #800020;
+            display: block;
+            margin: 15px 0;
+            font-weight: 400;
+            letter-spacing: 2px;
+            /* Убрано принудительное заглавное начертание */
+        }
+
+        .timeline { text-align: left; max-width: 400px; margin: 0 auto; }
+        .timeline-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            border-left: 1px solid #800020;
+            padding-left: 25px;
+        }
+        .time { font-weight: 400; color: #800020; min-width: 70px; }
+
+        .colors { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .c-circle { width: 55px; height: 55px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 8px rgba(0,0,0,0.06); }
+
+        .btn { 
+            background: #800020; 
+            color: white !important; 
+            padding: 18px 40px; text-decoration: none; 
+            text-transform: uppercase; font-size: 0.85rem; 
+            display: inline-block; letter-spacing: 2px;
+            margin-top: 25px;
+            border-radius: 4px;
+            font-weight: 400;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .btn:hover { transform: translateY(-2px); background: #6b001b; }
+
+        .map-container { height: 350px; margin-top: 25px; border-radius: 5px; overflow: hidden; border: 1px solid #800020; }
+
+        hr { border: 0; border-top: 1px solid #800020; margin: 30px 0; opacity: 0.2; }
+
+        @media (max-width: 600px) {
+            .names { font-size: 2.8rem; }
+            .main-photo { height: 350px; }
+            .invite-text { font-size: 1.1rem; }
+            .restaurant-name { font-size: 1.1rem; letter-spacing: 1px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="names">Иван & Мария</div>
+    
+    <div class="main-photo">
+        <img src="we.jpg" loading="lazy" alt="Иван и Мария" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000'">
+    </div>
+
+    <div class="photo-slogan">
+        Любовь — это когда счастлив тот, кто рядом с тобой.
+    </div>
+    
+    <div class="invite-text">
+        Дорогие родные и близкие!
+        Говорят, что семья — это там, где тебя любят и ждут. Мы хотим, чтобы наша семья началась с тепла и радости, которые мы чувствуем рядом с вами.
+        Будем счастливы видеть вас на нашей свадьбе! Приглашаем вас стать частью дня, когда мы станем семьей.
+    </div>
+
+    <div class="date-block">
+        <div class="day-number">10</div>
+        <div class="month-year-info">
+            Сентября<br>2026
+        </div>
+        <span class="weekday">Четверг</span>
+    </div>
+</header>
+
+<section>
+    <div class="card with-border">
+        <h2>Подтверждение присутствия</h2>
+        <p>Пожалуйста, подтвердите ваше присутствие на нашем празднике до 7 июля, заполнив небольшую анкету по кнопке ниже:</p>
+        <a href="https://forms.gle/TFXsxb24NPZAjoTP8" class="btn" target="_blank">Заполнить анкету</a>
+    </div>
+
+    <div class="card with-border">
+        <h2>Программа дня</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="time">15:30</div><div>Сбор гостей</div></div>
+            <div class="timeline-item"><div class="time">16:00</div><div>Торжественная церемония</div></div>
+            <div class="timeline-item"><div class="time">16:30</div><div>Свадебный ужин</div></div>
+            <div class="timeline-item"><div class="time">23:00</div><div>Завершение торжества</div></div>
+        </div>
+    </div>
+
+    <div class="card no-border">
+        <h2>Дресс-код</h2>
+        <p>Мы будем благодарны, если вы поддержите палитру нашей свадьбы:</p>
+        <div class="colors">
+            <div class="c-circle" style="background:#800020;"></div>
+            <div class="c-circle" style="background:#8FA382;"></div>
+            <div class="c-circle" style="background:#F5E0C3;"></div>
+            <div class="c-circle" style="background:#D1D1D1;"></div>
+        </div>
+    </div>
+
+    <div class="card no-border">
+        <h2>Локация</h2>
+        <p>г. Липецк, ул. 50 лет НЛМК, 6Б</p>
+        <span class="restaurant-name">ресторан OPENHOUSE</span>
+        
+        <div class="map-container">
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.593951%2C52.588553&mode=search&ol=biz&oid=1285078513&z=16" width="100%" height="350" frameborder="0"></iframe>
+        </div>
+        <a href="https://yandex.ru/maps/-/CPVn50LI" class="btn" target="_blank">Открыть навигатор</a>
+    </div>
+
+    <div class="card no-border">
+        <h2>Пожелания</h2>
+        <p>Ваши улыбки — главное украшение нашего праздника, поэтому просим вас не тратиться на цветы. Вместо букетов, мы будем рады вкладу в наш семейный бюджет.</p>
+        
+        <hr>
+        
+        <p>Следите за новостями и делитесь фото в нашем чате:</p>
+        <a href="https://t.me/+TCrKmF9XOqg5MDVi" class="btn" style="background:#555" target="_blank">Telegram чат гостей</a>
+    </div>
+</section>
+
+</body>
+</html>
