@@ -148,32 +148,38 @@
         }
         .time { font-weight: 400; color: #800020; min-width: 70px; }
 
+        /* ИСПРАВЛЕННЫЙ БЛОК ЦВЕТОВ */
         .colors { 
             display: flex; 
             justify-content: center; 
-            gap: 20px; 
-            flex-wrap: wrap; 
-            margin-top: 20px; 
+            gap: 5px; 
+            flex-wrap: nowrap; /* Всегда в ряд */
+            margin-top: 25px;
+            width: 100%;
+            overflow-x: visible; 
         }
         .color-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            flex: 0 0 22%; /* Занимают ровно четверть ширины */
+            max-width: 90px;
         }
         .c-circle { 
-            width: 55px; height: 55px; 
+            width: 48px; 
+            height: 48px; 
             border-radius: 50%; 
-            border: 3px solid white; 
+            border: 2px solid white; 
             box-shadow: 0 4px 8px rgba(0,0,0,0.06); 
         }
         .color-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-style: italic;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: #444;
-            margin-top: 5px;
+            margin-top: 8px;
+            white-space: nowrap; /* Чтобы названия не переносились */
         }
 
         .btn { 
@@ -198,6 +204,8 @@
             .main-photo { height: 350px; }
             .invite-text { font-size: 1.1rem; }
             .restaurant-name { font-size: 1.1rem; letter-spacing: 1px; }
+            .c-circle { width: 42px; height: 42px; }
+            .color-label { font-size: 0.85rem; }
         }
     </style>
 </head>
