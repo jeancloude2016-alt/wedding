@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Day | Иван & Мария</title>
 
     <meta property="og:title" content="Иван и Мария | Приглашение на свадьбу!">
     <meta property="og:description" content="Будем рады видеть вас на нашем празднике 10 сентября!">
-    <meta property="og:image" content="we.jpg">
+    <meta property="og:image" content="https://vladimirovich-ivan.github.io/wedding/we.jpg">
+    <meta property="og:url" content="https://vladimirovich-ivan.github.io/wedding/">
     <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
         body { 
@@ -154,38 +155,44 @@
         }
         .time { font-weight: 400; color: #800020; min-width: 70px; }
 
-        /* ИСПРАВЛЕННЫЙ БЛОК ЦВЕТОВ */
         .colors { 
             display: flex; 
-            justify-content: center; 
+            justify-content: space-between; /* Распределяем равномерно */
             gap: 5px; 
-            flex-wrap: nowrap; /* Всегда в ряд */
+            flex-wrap: nowrap;
             margin-top: 25px;
             width: 100%;
-            overflow-x: visible; 
         }
         .color-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex: 0 0 22%; /* Занимают ровно четверть ширины */
-            max-width: 90px;
+            flex: 1; /* Позволяем элементам занимать равное место */
+            min-width: 0; /* Важно для корректного сжатия */
         }
         .c-circle { 
-            width: 48px; 
-            height: 48px; 
+            width: 45px; /* Немного уменьшил с 50px */
+            height: 45px; 
             border-radius: 50%; 
             border: 2px solid white; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+            flex-shrink: 0; 
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
+        .c-circle:hover { transform: scale(1.1); } /* Легкое увеличение при наведении */
+
         .color-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Уменьшил шрифт подписей */
             font-style: italic;
             letter-spacing: 0.5px;
             color: #444;
             margin-top: 8px;
-            white-space: nowrap; /* Чтобы названия не переносились */
+            text-align: center;
+            line-height: 1.1;
+            word-wrap: break-word; /* Разрешаем перенос слов */
+            white-space: normal; /* Убрал nowrap, чтобы текст мог быть в 2 строки */
         }
 
         .btn { 
@@ -205,13 +212,44 @@
 
         hr { border: 0; border-top: 1px solid #800020; margin: 30px 0; opacity: 0.2; }
 
+        /* СТИЛИ ДЛЯ ВСПЛЫВАЮЩЕГО ОКНА (MODAL) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            padding-top: 50px; 
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: auto;           /* Позволяем ширине подстраиваться */
+            max-width: 95%;        /* Чтобы не прилипало к краям на узких экранах */
+            height: auto;
+            max-height: 90vh;      /* ГЛАВНОЕ: картинка не может быть выше 90% экрана */
+            border-radius: 10px;
+            border: 3px solid #F5E0C3;
+            object-fit: contain;   /* Сохраняет пропорции, вписывая фото целиком */
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         @media (max-width: 600px) {
             .names { font-size: 2.8rem; }
             .main-photo { height: 350px; }
             .invite-text { font-size: 1.1rem; }
             .restaurant-name { font-size: 1.1rem; letter-spacing: 1px; }
-            .c-circle { width: 42px; height: 42px; }
-            .color-label { font-size: 0.85rem; }
+            .c-circle { width: 38px; height: 38px; }
+            .color-label { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -273,6 +311,10 @@
                 <span class="color-label">Оливковый</span>
             </div>
             <div class="color-item">
+                <div class="c-circle" style="background:#5D4037;"></div>
+                <span class="color-label">Шоколад</span>
+            </div>
+            <div class="color-item">
                 <div class="c-circle" style="background:#F5E0C3;"></div>
                 <span class="color-label">Шампань</span>
             </div>
@@ -281,6 +323,7 @@
                 <span class="color-label">Серебро</span>
             </div>
         </div>
+        <p style="font-size: 0.6rem; margin-top: 15px; opacity: 0.6;">(нажми на цвет)</p>
     </div>
 
     <div class="card no-border">
@@ -304,6 +347,41 @@
         <a href="https://t.me/+TCrKmF9XOqg5MDVi" class="btn" style="background:#555" target="_blank">Telegram чат гостей</a>
     </div>
 </section>
+
+<div id="photoModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="imgTarget">
+</div>
+
+<script>
+    // Получаем элементы
+    var modal = document.getElementById("photoModal");
+    var modalImg = document.getElementById("imgTarget");
+    var circles = document.querySelectorAll(".c-circle");
+    var closeBtn = document.getElementsByClassName("close-modal")[0];
+
+    // При нажатии на любой кружок
+  circles.forEach(function(circle) {
+        circle.onclick = function() {
+            modal.style.display = "flex"; // Используем flex вместо block для центровки
+            modal.style.alignItems = "center";
+            modal.style.justifyContent = "center";
+            modalImg.src = "people.jpg";
+        }
+    });
+
+    // Закрытие при нажатии на крестик
+    closeBtn.onclick = function() { 
+        modal.style.display = "none";
+    }
+
+    // Закрытие при нажатии в любое место вне картинки
+    modal.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
